@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 mMotionBase.setTransition(R.id.middle_anim, R.id.start_anim);
                 mMotionBase.setTransitionDuration(1000);
                 mMotionBase.setTransitionListener(mEndAnimListener);
-                mMotionBase.transitionToStart();
+                mMotionBase.transitionToEnd();
                 break;
 
         }
@@ -112,9 +112,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onTransitionCompleted(MotionLayout motionLayout, int i) {
-//            mMotionBase.setTransition(R.id.middle_anim, R.id.end_anim);
-//            mMotionBase.setTransitionDuration(1000);
-//            mMotionBase.transitionToState(R.id.end_anim);
+            mMotionBase.setTransition(R.id.middle_anim, R.id.end_anim);
+            mMotionBase.setTransitionDuration(1000);
+            mMotionBase.setTransitionListener(null);
+            mMotionBase.transitionToEnd();
             Log.d("ABC", "Completed");
 
         }
@@ -139,9 +140,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onTransitionCompleted(MotionLayout motionLayout, int i) {
-//            mMotionBase.setTransition(R.id.middle_anim, R.id.start_anim);
-//            mMotionBase.setTransitionDuration(1000);
-//            mMotionBase.transitionToState(R.id.start_anim);
+            mMotionBase.setTransition(R.id.middle_anim, R.id.start_anim);
+            mMotionBase.setTransitionDuration(1000);
+            mMotionBase.setTransitionListener(null);
+            mMotionBase.transitionToEnd();
 
         }
 

@@ -3,7 +3,6 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        android:id="@+id/begin"
         motion:constraintSetEnd="@+id/middle_anim"
         motion:constraintSetStart="@id/start_anim"
         motion:duration="2000"
@@ -22,9 +21,8 @@
 
 
     <Transition
-        android:id="@+id/end"
         motion:constraintSetEnd="@+id/end_anim"
-        motion:constraintSetStart="@+id/start_anim"
+        motion:constraintSetStart="@+id/middle_anim"
         motion:duration="2000"
         motion:autoTransition="none">
 
@@ -42,45 +40,98 @@
 
     <ConstraintSet android:id="@+id/start_anim">
 
-        <Constraint android:id="@id/current_container">
-            <Layout
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginStart="8dp"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintVertical_bias="0.8"
-                motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint android:id="@id/current_container"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="8dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintVertical_bias="0.8"
+            motion:layout_constraintTop_toTopOf="parent">
+
+            <CustomAttribute
+                motion:attributeName="BackgroundColor"
+                motion:customColorValue="@android:color/holo_orange_light"/>
+        </Constraint>
+
+
+        <Constraint
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/text_hint"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent">
+            <CustomAttribute
+                motion:attributeName="Text"
+                motion:customStringValue="Start"/>
+        </Constraint>
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/middle_anim"
+        motion:deriveConstraintsFrom="@+id/start_anim">
+        <Constraint android:id="@id/current_container"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="8dp"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintVertical_bias="0.8"
+            motion:layout_constraintTop_toTopOf="parent" >
+            <CustomAttribute
+                motion:attributeName="BackgroundColor"
+                motion:customColorValue="@android:color/holo_blue_dark"/>
+        </Constraint>
+
+        <Constraint
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/text_hint"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent">
+            <CustomAttribute
+                motion:attributeName="Text"
+                motion:customStringValue="Middle"/>
         </Constraint>
     </ConstraintSet>
 
-    <ConstraintSet android:id="@+id/middle_anim">
-        <Constraint android:id="@id/current_container">
-            <Layout
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginEnd="8dp"
-                motion:layout_constraintStart_toStartOf="parent"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintVertical_bias="0.8"
-                motion:layout_constraintTop_toTopOf="parent" />
+
+    <ConstraintSet android:id="@+id/end_anim"
+        motion:deriveConstraintsFrom="@+id/middle_anim">
+        <Constraint android:id="@id/current_container"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginEnd="8dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintVertical_bias="0.8"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent">
+
+            <CustomAttribute
+                motion:attributeName="BackgroundColor"
+                motion:customColorValue="@android:color/holo_green_light"/>
+        </Constraint>
+
+        <Constraint
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@id/text_hint"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent">
+            <CustomAttribute
+                motion:attributeName="text"
+                motion:customStringValue="End"/>
         </Constraint>
     </ConstraintSet>
 
 
-    <ConstraintSet android:id="@+id/end_anim">
-        <Constraint android:id="@id/current_container">
-            <Layout
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_marginEnd="8dp"
-                motion:layout_constraintEnd_toEndOf="parent"
-                motion:layout_constraintVertical_bias="0.8"
-                motion:layout_constraintBottom_toBottomOf="parent"
-                motion:layout_constraintTop_toTopOf="parent" />
-        </Constraint>
-    </ConstraintSet>
 
 
 </MotionScene>

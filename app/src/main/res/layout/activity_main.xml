@@ -6,6 +6,7 @@
     android:id="@+id/motion_base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     app:layoutDescription="@xml/test_motion_editor_layout_scene"
     tools:context=".MainActivity">
 
@@ -13,11 +14,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/current_container"
-        android:foreground="@android:color/holo_orange_light"
+        android:background="@android:color/holo_orange_light"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6"
+        android:tooltipText="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/text_hint"
+            android:text="Start"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"/>
+    </FrameLayout>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
