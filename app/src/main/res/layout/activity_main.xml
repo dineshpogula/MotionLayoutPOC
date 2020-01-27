@@ -6,7 +6,7 @@
     android:id="@+id/motion_base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/to_and_fro_motion_scene"
+    app:layoutDescription="@xml/test_motion_editor_layout_scene"
     tools:context=".MainActivity">
 
     <FrameLayout
@@ -15,6 +15,7 @@
         android:id="@+id/current_container"
         android:foreground="@android:color/holo_orange_light"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.6"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 

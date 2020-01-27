@@ -31,18 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         mMotionBase = activityMainBinding.motionBase;
 
-//
-//        addMotionSceneToView();
-//
-//
-//        removeMotionSceneToView();
-//
-
 
     }
 
     private void removeMotionSceneToView() {
-        mMotionBase.removeView(mMotionBase.getChildAt(mMotionBase.getChildCount() -1));
+        mMotionBase.removeView(mMotionBase.getChildAt(mMotionBase.getChildCount() - 1));
 
         Log.d("ABC", "Count " + mMotionBase.getChildCount());
     }
@@ -86,10 +79,16 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case KeyEvent.KEYCODE_S:
-
-                mMotionBase.setTransition(R.id.start, R.id.end);
+                mMotionBase.setTransition(R.id.start_anim, R.id.middle_anim);
                 mMotionBase.setTransitionDuration(1000);
+                mMotionBase.setTransitionListener(mStartSecondAnimListener);
                 mMotionBase.transitionToEnd();
+                break;
+            case KeyEvent.KEYCODE_R:
+                mMotionBase.setTransition(R.id.middle_anim, R.id.start_anim);
+                mMotionBase.setTransitionDuration(1000);
+                mMotionBase.setTransitionListener(mEndAnimListener);
+                mMotionBase.transitionToStart();
                 break;
 
         }
@@ -97,4 +96,58 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    MotionLayout.TransitionListener mStartSecondAnimListener = new MotionLayout.TransitionListener() {
+        @Override
+        public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
+            Log.d("ABC", "Started" );
+
+        }
+
+        @Override
+        public void onTransitionChange(MotionLayout motionLayout, int i, int i1, float v) {
+            Log.d("ABC", "percentage" + (motionLayout.getProgress()*100));
+
+
+        }
+
+        @Override
+        public void onTransitionCompleted(MotionLayout motionLayout, int i) {
+//            mMotionBase.setTransition(R.id.middle_anim, R.id.end_anim);
+//            mMotionBase.setTransitionDuration(1000);
+//            mMotionBase.transitionToState(R.id.end_anim);
+            Log.d("ABC", "Completed");
+
+        }
+
+        @Override
+        public void onTransitionTrigger(MotionLayout motionLayout, int i, boolean b, float v) {
+            Log.d("ABC", "Trigger" + (motionLayout.getDefinedTransitions()));
+
+        }
+    };
+
+    MotionLayout.TransitionListener mEndAnimListener = new MotionLayout.TransitionListener() {
+        @Override
+        public void onTransitionStarted(MotionLayout motionLayout, int i, int i1) {
+
+        }
+
+        @Override
+        public void onTransitionChange(MotionLayout motionLayout, int i, int i1, float v) {
+
+        }
+
+        @Override
+        public void onTransitionCompleted(MotionLayout motionLayout, int i) {
+//            mMotionBase.setTransition(R.id.middle_anim, R.id.start_anim);
+//            mMotionBase.setTransitionDuration(1000);
+//            mMotionBase.transitionToState(R.id.start_anim);
+
+        }
+
+        @Override
+        public void onTransitionTrigger(MotionLayout motionLayout, int i, boolean b, float v) {
+
+        }
+    };
 }
